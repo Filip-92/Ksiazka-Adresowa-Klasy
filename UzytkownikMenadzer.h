@@ -16,6 +16,8 @@ class UzytkownikMenadzer
 {
     int idZalogowanegoUzytkownika;
     vector <Uzytkownik> uzytkownicy;
+    fstream plikTekstowy;
+    string nazwaPlikuZUzytkownikami = "Uzytkownicy.txt";
 
     Uzytkownik podajDaneNowegoUzytkownika();
     int pobierzIdNowegoUzytkownika();
@@ -25,6 +27,8 @@ class UzytkownikMenadzer
   public:
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
+    void wczytajUzytkownikowZPliku();
+    Uzytkownik pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami);
 };
 
 #endif
