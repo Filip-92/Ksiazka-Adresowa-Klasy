@@ -12,7 +12,7 @@ int main()
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt");
 
     //vector <Uzytkownik> uzytkownicy;
-    //vector <Adresat> adresaci;
+    vector <Adresat> adresaci;
 
     int idZalogowanegoUzytkownika = 0;
     int idOstatniegoAdresata = 0;
@@ -47,11 +47,9 @@ int main()
         else
         {
 
-            /* if (adresaci.empty() == true)
-                 // Pobieramy idOstatniegoAdresata, po to aby zoptymalizowac program.
-                 // Dzieki temu, kiedy uztykwonik bedzie dodawal nowego adresata
-                 // to nie bedziemy musieli jeszcze raz ustalac idOstatniegoAdresata
-                 idOstatniegoAdresata = wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
+            if (adresaci.empty() == true)
+
+             idOstatniegoAdresata = wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
 
              wybor = wybierzOpcjeZMenuUzytkownika();
 
@@ -63,8 +61,9 @@ int main()
              case '2':
                  wyswietlWszystkichAdresatow(adresaci);
                  break;
-            case '3':
-                 zmianaHaslaZalogowanegoUzytkownika
+            /*case '3':
+                 zmianaHaslaZalogowanegoUzytkownika(uzytkownicy, idZalogowanegoUzytkownika);
+                 break;
             case '4':
                  idZalogowanegoUzytkownika = 0;
                  adresaci.clear();

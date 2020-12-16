@@ -10,7 +10,9 @@ class MetodyPomocnicze
 {
 public:
     static string konwerjsaIntNaString(int liczba);
-    char wybierzOpcjeZMenuGlownego(char wybor);
+    string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
+    int konwersjaStringNaInt(string liczba);
+    string pobierzLiczbe(string tekst, int pozycjaZnaku);
 };
 
 #endif
