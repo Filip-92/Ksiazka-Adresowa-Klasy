@@ -5,8 +5,12 @@ void KsiazkaAdresowa::rejestracjaUzytkownika()
     uzytkownikMenadzer.rejestracjaUzytkownika();
 }
 
-void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
+void KsiazkaAdresowa::wczytajUzytkownikowZPliku()
 {
-    uzytkownikMenadzer.wypiszWszystkichUzytkownikow();
+    uzytkownikMenadzer.wczytajUzytkownikowZPliku();
 }
 
+int KsiazkaAdresowa::logowanieUzytkownika()
+{
+    uzytkownikMenadzer.logowanieUzytkownika();
+}

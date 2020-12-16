@@ -10,6 +10,7 @@ class MetodyPomocnicze
 {
 public:
     static string konwerjsaIntNaString(int liczba);
+    char wybierzOpcjeZMenuGlownego(char wybor);
 };
 
 #endif

@@ -4,6 +4,9 @@
 #include <iostream>
 
 #include "UzytkownikMenadzer.h"
+#include "PlikZUzytkownikami.h"
+#include "Uzytkownik.h"
+#include "MetodyPomocnicze.h"
 
 using namespace std;
 
@@ -17,6 +20,8 @@ public:
         };
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
+    int logowanieUzytkownika();
+    void wczytajUzytkownikowZPliku();
 
 };
 
