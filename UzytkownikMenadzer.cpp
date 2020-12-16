@@ -70,4 +70,4 @@ void UzytkownikMenadzer::wczytajUzytkownikowZPliku()
 {
     uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
 }
-//
+
