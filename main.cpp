@@ -5,12 +5,13 @@
 using namespace std;
 
 char wybierzOpcjeZMenuGlownego();
+char wybierzOpcjeZMenuUzytkownika();
 
 int main()
 {
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt");
 
-    vector <Uzytkownik> uzytkownicy;
+    //vector <Uzytkownik> uzytkownicy;
     //vector <Adresat> adresaci;
 
     int idZalogowanegoUzytkownika = 0;
@@ -61,6 +62,12 @@ int main()
                  break;
              case '2':
                  wyswietlWszystkichAdresatow(adresaci);
+                 break;
+            case '3':
+                 zmianaHaslaZalogowanegoUzytkownika
+            case '4':
+                 idZalogowanegoUzytkownika = 0;
+                 adresaci.clear();
                  break;*/
 
             return 0;
@@ -78,6 +85,25 @@ char wybierzOpcjeZMenuGlownego()
     cout << "1. Rejestracja" << endl;
     cout << "2. Logowanie" << endl;
     cout << "9. Koniec programu" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Twoj wybor: ";
+    cin >> wybor;
+
+    return wybor;
+}
+
+char wybierzOpcjeZMenuUzytkownika()
+{
+    char wybor;
+
+    system("cls");
+    cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "1. Dodaj adresata" << endl;
+    cout << "2. Wyswietl adresatow" << endl;
+    cout << "---------------------------" << endl;
+    cout << "3. Zmien haslo" << endl;
+    cout << "4. Wyloguj sie" << endl;
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
     cin >> wybor;

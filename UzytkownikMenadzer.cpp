@@ -108,3 +108,8 @@ int UzytkownikMenadzer::logowanieUzytkownika()
     system("pause");
     return 0;
 }
+
+void UzytkownikMenadzer::zmianaHaslaZalogowanegoUzytkownika(vector <Uzytkownik> &uzytkownicy, int idZalogowanegoUzytkownika)
+{
+    plikZUzytkownikami.zmianaHaslaZalogowanegoUzytkownika(uzytkownicy, idZalogowanegoUzytkownika);
+}

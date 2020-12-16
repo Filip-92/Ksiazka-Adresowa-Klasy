@@ -14,3 +14,8 @@ int KsiazkaAdresowa::logowanieUzytkownika()
 {
     uzytkownikMenadzer.logowanieUzytkownika();
 }
+
+void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika(vector <Uzytkownik> &uzytkownicy, int idZalogowanegoUzytkownika)
+{
+    uzytkownikMenadzer.zmianaHaslaZalogowanegoUzytkownika(uzytkownicy, idZalogowanegoUzytkownika);
+}

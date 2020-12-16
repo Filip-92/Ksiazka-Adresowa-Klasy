@@ -30,7 +30,8 @@ class UzytkownikMenadzer
     void wypiszWszystkichUzytkownikow();
     void wczytajUzytkownikowZPliku();
     Uzytkownik pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami);
-    //int logowanieUzytkownika();
+    int logowanieUzytkownika();
+    void zmianaHaslaZalogowanegoUzytkownika(vector <Uzytkownik> &uzytkownicy, int idZalogowanegoUzytkownika);
 };
 
 #endif
