@@ -8,15 +8,15 @@
 
 #include "Adresat.h"
 #include "MetodyPomocnicze.h"
-#include "PlikZUzytkownikami.h"
 #include "AdresatMenadzer.h"
+#include "KsiazkaAdresowa1.h"
 
 using namespace std;
 
 class PlikZAdresatami
 {
     const string nazwaPlikuZAdresatami;
-    //string nazwaPlikuZAdresatami = "Adresaci.txt"
+    fstream plikTeskstowy;
 
     bool czyPlikJestPusty(fstream &plikTekstowy);
     string zamienDaneAdresataNaLinieZDanymiOddzielonaPionowymiKreskami(Adresat adresat);
@@ -28,8 +28,8 @@ public:
     PlikZAdresatami(string NAZWAPLIKUZADRESATAMI) : nazwaPlikuZAdresatami(NAZWAPLIKUZADRESATAMI) {};
     int wczytajAdresatowZalogowanegoUzytkownikaZPliku(vector <Adresat> &adresaci, int idZalogowanegoUzytkownika);
     void dopiszAdresataDoPliku(Adresat adresat);
-    vector <Adresat> wczytajAdresatowZPliku();
     void zapiszWszystkichAdresatowDoPliku(vector <Adresat> &adresaci);
+    int dodajAdresata(vector <Adresat> &adresaci, int idZalogowanegoUzytkownika, int idOstatniegoAdresata);
 };
 
 #endif

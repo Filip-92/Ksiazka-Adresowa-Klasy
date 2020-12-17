@@ -1,6 +1,7 @@
 #include <iostream>
 #include "KsiazkaAdresowa.h"
 #include "MetodyPomocnicze.h"
+#include "KsiazkaAdresowa1.h"
 
 using namespace std;
 
@@ -48,21 +49,25 @@ int main()
         {
 
             if (adresaci.empty() == true)
+                //KsiazkaAdresowa1 ksiazkaAdresowa1;
 
-             idOstatniegoAdresata = wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
+            //KsiazkaAdresowa1 ksiazkaAdresowa1("Adresaci.txt");
+             //idOstatniegoAdresata = wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
 
              wybor = wybierzOpcjeZMenuUzytkownika();
 
              switch (wybor)
              {
              case '1':
-                 idOstatniegoAdresata = dodajAdresata(adresaci, idZalogowanegoUzytkownika, idOstatniegoAdresata);
-                 break;
+                 //idOstatniegoAdresata =
+                 KsiazkaAdresowa1 ksiazkaAdresowa1;
+                 ksiazkaAdresowa1.dodajAdresata(adresaci, idZalogowanegoUzytkownika, idOstatniegoAdresata);
+                 break;/*
              case '2':
-                 wyswietlWszystkichAdresatow(adresaci);
+                 //ksiazkaAdresowa1.wyswietlWszystkichAdresatow(adresaci);
                  break;
-            /*case '3':
-                 zmianaHaslaZalogowanegoUzytkownika(uzytkownicy, idZalogowanegoUzytkownika);
+            case '3':
+                 //zmianaHaslaZalogowanegoUzytkownika(uzytkownicy, idZalogowanegoUzytkownika);
                  break;
             case '4':
                  idZalogowanegoUzytkownika = 0;
@@ -72,6 +77,7 @@ int main()
             return 0;
         }
     }
+}
 }
 
 char wybierzOpcjeZMenuGlownego()

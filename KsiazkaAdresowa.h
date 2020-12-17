@@ -7,15 +7,12 @@
 #include "PlikZUzytkownikami.h"
 #include "Uzytkownik.h"
 #include "MetodyPomocnicze.h"
-#include "Adresat.h"
-#include "AdresatMenadzer.h"
 
 using namespace std;
 
 class KsiazkaAdresowa
 {
 UzytkownikMenadzer uzytkownikMenadzer;
-AdresatMenadzer adresatMenadzer;
 
 public:
     KsiazkaAdresowa(string nazwaPlikuZUzytkownikami) : uzytkownikMenadzer(nazwaPlikuZUzytkownikami) {

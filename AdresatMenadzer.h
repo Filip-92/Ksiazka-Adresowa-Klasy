@@ -16,15 +16,20 @@ using namespace std;
 class AdresatMenadzer
 {
     int idZalogowanegoUzytkownika;
+    int idOstatniegoAdresata;
     vector <Adresat> adresaci;
 
     fstream plikTekstowy;
     string nazwaPlikuZAdresatami = "Adresaci.txt";
     Adresat podajDaneNowegoAdresata(int idZalogowanegoUzytkownika, int idOstatniegoAdresata);
+    PlikZAdresatami plikZAdresatami;
 
    public:
+    AdresatMenadzer(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami) {};
     void wyswietlDaneAdresatow();
-    void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+    void wczytajAdresatowZalogowanegoUzytkownikaZPliku(vector <Adresat> &adresaci, int idZalogowanegoUzytkownika);
+    int dodajAdresata(vector <Adresat> &adresaci, int idZalogowanegoUzytkownika, int idOstatniegoAdresata);
+    int pobierzIdOstatniegoAdresata();
 };
 
 #endif

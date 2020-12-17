@@ -19,8 +19,3 @@ void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika(vector <Uzytkownik> &uz
 {
     uzytkownikMenadzer.zmianaHaslaZalogowanegoUzytkownika(uzytkownicy, idZalogowanegoUzytkownika);
 }
-
-void KsiazkaAdresowa::wyswietlDaneAdresatow()
-{
-    adresatMenadzer.wyswietlDaneAdresatow();
-}

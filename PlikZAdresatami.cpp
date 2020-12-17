@@ -146,18 +146,3 @@ Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami)
     }
     return adresat;
 }
-
-int dodajAdresata(vector <Adresat> &adresaci, int idZalogowanegoUzytkownika, int idOstatniegoAdresata)
-{
-    Adresat adresat;
-
-    system("cls");
-    cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
-    adresat = AdresatMenadzer::podajDaneNowegoAdresata(idZalogowanegoUzytkownika, idOstatniegoAdresata);
-
-    adresaci.push_back(adresat);
-    PlikZAdresatami::dopiszAdresataDoPliku(adresat);
-
-    return ++idOstatniegoAdresata;
-}
-
