@@ -1,7 +1,10 @@
 #include <iostream>
 #include "KsiazkaAdresowa.h"
-#include "MetodyPomocnicze.h"
-#include "KsiazkaAdresowa1.h"
+
+using namespace std;
+
+#include <iostream>
+#include "KsiazkaAdresowa.h"
 
 using namespace std;
 
@@ -10,7 +13,29 @@ char wybierzOpcjeZMenuUzytkownika();
 
 int main()
 {
-    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt");
+    char wybor;
+
+    //wybor = wybierzOpcjeZMenuGlownego();
+
+    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
+    ksiazkaAdresowa.rejestracjaUzytkownika();
+    ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
+    ksiazkaAdresowa.logowanieUzytkownika();
+
+
+
+    ksiazkaAdresowa.dodajAdresata();
+    ksiazkaAdresowa.wypiszWszystkichAdresatow();
+    ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
+    ksiazkaAdresowa.wylogowanieUzytkownika();
+
+    return 0;
+}
+
+/*
+int main()
+{
+    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
 
     //vector <Uzytkownik> uzytkownicy;
     vector <Adresat> adresaci;
@@ -34,7 +59,23 @@ int main()
                 ksiazkaAdresowa.rejestracjaUzytkownika();
                 break;
             case '2':
-                idZalogowanegoUzytkownika = ksiazkaAdresowa.logowanieUzytkownika();
+                ksiazkaAdresowa.logowanieUzytkownika();
+                wybor = wybierzOpcjeZMenuUzytkownika();
+                switch (wybor)
+                {
+                case '1':
+                    ksiazkaAdresowa.dodajAdresata();
+                    break;
+                case '2':
+                    ksiazkaAdresowa.wypiszWszystkichAdresatow();
+                    break;
+                case '3':
+                    ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
+                    break;
+                case '4':
+                    ksiazkaAdresowa.wylogowanieUzytkownika();
+                    break;
+                }
                 break;
             case '9':
                 exit(0);
@@ -45,40 +86,10 @@ int main()
                 break;
             }
         }
-        else
-        {
 
-            if (adresaci.empty() == true)
-                //KsiazkaAdresowa1 ksiazkaAdresowa1;
-
-            //KsiazkaAdresowa1 ksiazkaAdresowa1("Adresaci.txt");
-             //idOstatniegoAdresata = wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
-
-             wybor = wybierzOpcjeZMenuUzytkownika();
-
-             switch (wybor)
-             {
-             case '1':
-                 //idOstatniegoAdresata =
-                 KsiazkaAdresowa1 ksiazkaAdresowa1;
-                 ksiazkaAdresowa1.dodajAdresata(adresaci, idZalogowanegoUzytkownika, idOstatniegoAdresata);
-                 break;/*
-             case '2':
-                 //ksiazkaAdresowa1.wyswietlWszystkichAdresatow(adresaci);
-                 break;
-            case '3':
-                 //zmianaHaslaZalogowanegoUzytkownika(uzytkownicy, idZalogowanegoUzytkownika);
-                 break;
-            case '4':
-                 idZalogowanegoUzytkownika = 0;
-                 adresaci.clear();
-                 break;*/
-
-            return 0;
-        }
+        return 0;
     }
-}
-}
+}*/
 
 char wybierzOpcjeZMenuGlownego()
 {
@@ -115,3 +126,4 @@ char wybierzOpcjeZMenuUzytkownika()
 
     return wybor;
 }
+

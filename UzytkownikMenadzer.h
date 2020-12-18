@@ -16,8 +16,8 @@ class UzytkownikMenadzer
 {
     int idZalogowanegoUzytkownika;
     vector <Uzytkownik> uzytkownicy;
-    fstream plikTekstowy;
-    string nazwaPlikuZUzytkownikami = "Uzytkownicy.txt";
+    //fstream plikTekstowy;
+    //string nazwaPlikuZUzytkownikami = "Uzytkownicy.txt";
 
     Uzytkownik podajDaneNowegoUzytkownika();
     int pobierzIdNowegoUzytkownika();
@@ -25,13 +25,20 @@ class UzytkownikMenadzer
     PlikZUzytkownikami plikZUzytkownikami;
 
   public:
-    UzytkownikMenadzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {};
+    UzytkownikMenadzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {
+    idZalogowanegoUzytkownika = 0;
+    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
+    };
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
+    void wylogujUzytkownika();
+    bool czyUzytkownikJestZalogowany();
     void wczytajUzytkownikowZPliku();
+    int pobierzIdZalogowanegoUzytkownika();
     Uzytkownik pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami);
     int logowanieUzytkownika();
-    void zmianaHaslaZalogowanegoUzytkownika(vector <Uzytkownik> &uzytkownicy, int idZalogowanegoUzytkownika);
+    void zmianaHaslaZalogowanegoUzytkownika();
+    void zapiszWszystkichUzytkownikowDoPliku();
 };
 
 #endif

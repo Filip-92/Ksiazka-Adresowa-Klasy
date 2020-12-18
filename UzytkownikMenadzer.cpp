@@ -65,9 +65,32 @@ void UzytkownikMenadzer::wypiszWszystkichUzytkownikow()
     }
 }
 
+int UzytkownikMenadzer::pobierzIdZalogowanegoUzytkownika()
+{
+    return idZalogowanegoUzytkownika;
+}
+
 void UzytkownikMenadzer::wczytajUzytkownikowZPliku()
 {
     uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
+}
+
+void UzytkownikMenadzer::zmianaHaslaZalogowanegoUzytkownika()
+{
+    string noweHaslo = "";
+    cout << "Podaj nowe haslo: ";
+    cin >> noweHaslo;
+
+    for (vector <Uzytkownik>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++)
+    {
+        if (itr->pobierzId() == idZalogowanegoUzytkownika)
+        {
+            itr->ustawHaslo(noweHaslo);
+            cout << "Haslo zostalo zmienione." << endl << endl;
+            system("pause");
+        }
+    }
+    zapiszWszystkichUzytkownikowDoPliku();
 }
 
 int UzytkownikMenadzer::logowanieUzytkownika()
@@ -108,7 +131,21 @@ int UzytkownikMenadzer::logowanieUzytkownika()
     return 0;
 }
 
-void UzytkownikMenadzer::zmianaHaslaZalogowanegoUzytkownika(vector <Uzytkownik> &uzytkownicy, int idZalogowanegoUzytkownika)
+void UzytkownikMenadzer::wylogujUzytkownika()
 {
-    plikZUzytkownikami.zmianaHaslaZalogowanegoUzytkownika(uzytkownicy, idZalogowanegoUzytkownika);
+    idZalogowanegoUzytkownika = 0;
+}
+
+bool UzytkownikMenadzer::czyUzytkownikJestZalogowany()
+{
+    if (idZalogowanegoUzytkownika > 0) {
+        return true;
+    }
+    else
+        return false;
+}
+
+void UzytkownikMenadzer::zapiszWszystkichUzytkownikowDoPliku()
+{
+    plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }

@@ -3,33 +3,35 @@
 
 #include <iostream>
 #include <vector>
-#include <windows.h>
+#include <Windows.h>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 #include "Adresat.h"
-#include "Uzytkownik.h"
 #include "PlikZAdresatami.h"
+#include "UzytkownikMenadzer.h"
 
 using namespace std;
 
-class AdresatMenadzer
-{
-    int idZalogowanegoUzytkownika;
-    int idOstatniegoAdresata;
-    vector <Adresat> adresaci;
+class AdresatMenadzer {
+	const int ID_ZALOGOWANEGO_UZYTKOWNIKA;
+	vector <Adresat> adresaci;
 
-    fstream plikTekstowy;
-    string nazwaPlikuZAdresatami = "Adresaci.txt";
-    Adresat podajDaneNowegoAdresata(int idZalogowanegoUzytkownika, int idOstatniegoAdresata);
-    PlikZAdresatami plikZAdresatami;
+	Adresat podajDaneNowegoAdresata();
+	int pobierzIdOstatniegoAdresata();
+	void wyswietlDaneAdresata(Adresat adresat);
+	PlikZAdresatami plikZAdresatami;
+public:
+	/*AdresatMenadzer(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami) {};*/
+	AdresatMenadzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika) :
+		plikZAdresatami(nazwaPlikuZAdresatami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
+	{
+		adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+	};
 
-   public:
-    AdresatMenadzer(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami) {};
-    void wyswietlDaneAdresatow();
-    void wczytajAdresatowZalogowanegoUzytkownikaZPliku(vector <Adresat> &adresaci, int idZalogowanegoUzytkownika);
-    int dodajAdresata(vector <Adresat> &adresaci, int idZalogowanegoUzytkownika, int idOstatniegoAdresata);
-    int pobierzIdOstatniegoAdresata();
+	void dodajAdresata();
+	void wyswietlWszystkichAdresatow();
 };
 
 #endif
