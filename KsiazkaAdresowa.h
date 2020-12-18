@@ -38,6 +38,7 @@ public:
 	void wypiszWszystkichAdresatow();
 	void dodajAdresata();
 	void wczytajUzytkownikowZPliku();
+	void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 };
 
 #endif

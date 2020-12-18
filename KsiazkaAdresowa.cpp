@@ -5,10 +5,10 @@ void KsiazkaAdresowa::rejestracjaUzytkownika()
     uzytkownikMenadzer.rejestracjaUzytkownika();
 }
 
-void KsiazkaAdresowa::wczytajUzytkownikowZPliku()
+/*void KsiazkaAdresowa::wczytajUzytkownikowZPliku()
 {
     uzytkownikMenadzer.wczytajUzytkownikowZPliku();
-}
+}*/
 
 void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
 {
@@ -58,4 +58,9 @@ void KsiazkaAdresowa::czyUzytkownikJestZalogowany()
 void KsiazkaAdresowa::wypiszWszystkichAdresatow()
 {
     adresatMenadzer->wyswietlWszystkichAdresatow();
+}
+
+void KsiazkaAdresowa::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
+{
+    adresatMenadzer->wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 }

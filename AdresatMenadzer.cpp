@@ -81,3 +81,8 @@ int AdresatMenadzer::pobierzIdOstatniegoAdresata()
     else
         return adresaci.back().pobierzIdAdresata() + 1;
 }
+
+void AdresatMenadzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
+{
+    plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+}

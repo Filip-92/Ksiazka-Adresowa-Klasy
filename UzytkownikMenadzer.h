@@ -35,7 +35,7 @@ class UzytkownikMenadzer
     bool czyUzytkownikJestZalogowany();
     void wczytajUzytkownikowZPliku();
     int pobierzIdZalogowanegoUzytkownika();
-    Uzytkownik pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami);
+    //Uzytkownik pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami);
     int logowanieUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika();
     void zapiszWszystkichUzytkownikowDoPliku();
