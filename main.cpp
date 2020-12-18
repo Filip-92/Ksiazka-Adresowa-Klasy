@@ -17,8 +17,6 @@ int main()
 
     char wybor;
 
-    //ksiazkaAdresowa.wczytajUzytkownikowZPliku();
-
     while (true)
     {
         if (idZalogowanegoUzytkownika == 0)
@@ -34,6 +32,7 @@ int main()
             case '2':
                 system("cls");
                 ksiazkaAdresowa.logowanieUzytkownika();
+                if(ksiazkaAdresowa.czyUzytkownikJestZalogowany() == true)
                 idZalogowanegoUzytkownika++;
                 break;
              case '3':

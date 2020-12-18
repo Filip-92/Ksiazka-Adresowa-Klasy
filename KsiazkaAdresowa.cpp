@@ -50,9 +50,9 @@ void KsiazkaAdresowa::dodajAdresata()
     }
 }
 
-void KsiazkaAdresowa::czyUzytkownikJestZalogowany()
+bool KsiazkaAdresowa::czyUzytkownikJestZalogowany()
 {
-    uzytkownikMenadzer.czyUzytkownikJestZalogowany();
+    idZalogowanegoUzytkownika = uzytkownikMenadzer.czyUzytkownikJestZalogowany();
 }
 
 void KsiazkaAdresowa::wypiszWszystkichAdresatow()

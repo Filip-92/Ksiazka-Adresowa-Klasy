@@ -11,6 +11,7 @@ class KsiazkaAdresowa {
 	UzytkownikMenadzer uzytkownikMenadzer;
 	AdresatMenadzer* adresatMenadzer;
 	const string NAZWA_PLIKU_Z_ADRESATAMI;
+	int idZalogowanegoUzytkownika;
 public:
 	/*
 	KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami)
@@ -29,7 +30,7 @@ public:
 		adresatMenadzer = NULL;
 	}
 
-	void czyUzytkownikJestZalogowany();
+	bool czyUzytkownikJestZalogowany();
 	void rejestracjaUzytkownika();
 	void logowanieUzytkownika();
 	void wylogowanieUzytkownika();
