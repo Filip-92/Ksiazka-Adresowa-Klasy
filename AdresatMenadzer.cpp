@@ -4,7 +4,8 @@ Adresat AdresatMenadzer::podajDaneNowegoAdresata()
 {
     Adresat adresat;
     string imie, nazwisko, numerTelefonu, email, adres;
-    adresat.ustawIdAdresata(pobierzIdOstatniegoAdresata());
+
+    adresat.ustawIdAdresata((plikZAdresatami.pobierzIdOstatniegoAdresata()+1));
     adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
     cout << "Podaj imie: ";
@@ -72,14 +73,6 @@ void AdresatMenadzer::wyswietlWszystkichAdresatow()
         cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
     }
     system("pause");
-}
-
-int AdresatMenadzer::pobierzIdOstatniegoAdresata()
-{
-    if (adresaci.empty() == true)
-        return 1;
-    else
-        return adresaci.back().pobierzIdAdresata() + 1;
 }
 
 void AdresatMenadzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku()

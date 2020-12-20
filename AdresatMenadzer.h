@@ -19,11 +19,10 @@ class AdresatMenadzer {
 	vector <Adresat> adresaci;
 
 	Adresat podajDaneNowegoAdresata();
-	int pobierzIdOstatniegoAdresata();
 	void wyswietlDaneAdresata(Adresat adresat);
 	PlikZAdresatami plikZAdresatami;
+
 public:
-	/*AdresatMenadzer(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami) {};*/
 	AdresatMenadzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika) :
 		plikZAdresatami(nazwaPlikuZAdresatami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
 	{

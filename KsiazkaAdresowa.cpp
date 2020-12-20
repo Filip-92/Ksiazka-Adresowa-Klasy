@@ -5,11 +5,6 @@ void KsiazkaAdresowa::rejestracjaUzytkownika()
     uzytkownikMenadzer.rejestracjaUzytkownika();
 }
 
-/*void KsiazkaAdresowa::wczytajUzytkownikowZPliku()
-{
-    uzytkownikMenadzer.wczytajUzytkownikowZPliku();
-}*/
-
 void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
 {
     uzytkownikMenadzer.wypiszWszystkichUzytkownikow();
@@ -63,4 +58,41 @@ void KsiazkaAdresowa::wypiszWszystkichAdresatow()
 void KsiazkaAdresowa::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
 {
     adresatMenadzer->wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+}
+
+char KsiazkaAdresowa::wybierzOpcjeZMenuGlownego()
+{
+    char wybor;
+
+    system("cls");
+    cout << "    >>> MENU  GLOWNE <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "1. Rejestracja" << endl;
+    cout << "2. Logowanie" << endl;
+    cout << "3. Dodaj adresata" << endl;
+    cout << "9. Koniec programu" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Twoj wybor: ";
+    cin >> wybor;
+
+    return wybor;
+}
+
+char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika()
+{
+    char wybor;
+
+    system("cls");
+    cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "1. Dodaj adresata" << endl;
+    cout << "2. Wyswietl adresatow" << endl;
+    cout << "---------------------------" << endl;
+    cout << "3. Zmien haslo" << endl;
+    cout << "4. Wyloguj sie" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Twoj wybor: ";
+    cin >> wybor;
+
+    return wybor;
 }

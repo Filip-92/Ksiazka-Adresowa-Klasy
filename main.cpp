@@ -3,9 +3,6 @@
 
 using namespace std;
 
-char wybierzOpcjeZMenuGlownego();
-char wybierzOpcjeZMenuUzytkownika();
-
 int main()
 {
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
@@ -13,15 +10,14 @@ int main()
     vector <Adresat> adresaci;
 
     int idZalogowanegoUzytkownika;
-    int idOstatniegoAdresata = 0;
 
     char wybor;
 
     while (true)
     {
-        if (idZalogowanegoUzytkownika == 0)
+        if (ksiazkaAdresowa.czyUzytkownikJestZalogowany() == false)
         {
-            wybor = wybierzOpcjeZMenuGlownego();
+            wybor = ksiazkaAdresowa.wybierzOpcjeZMenuGlownego();
 
             switch (wybor)
             {
@@ -50,7 +46,7 @@ int main()
         }
         else
         {
-            wybor = wybierzOpcjeZMenuUzytkownika();
+            wybor = ksiazkaAdresowa.wybierzOpcjeZMenuUzytkownika();
 
             switch (wybor)
             {
@@ -79,42 +75,5 @@ int main()
     }
 }
 return 0;
-}
-
-char wybierzOpcjeZMenuGlownego()
-{
-    char wybor;
-
-    system("cls");
-    cout << "    >>> MENU  GLOWNE <<<" << endl;
-    cout << "---------------------------" << endl;
-    cout << "1. Rejestracja" << endl;
-    cout << "2. Logowanie" << endl;
-    cout << "3. Dodaj adresata" << endl;
-    cout << "9. Koniec programu" << endl;
-    cout << "---------------------------" << endl;
-    cout << "Twoj wybor: ";
-    cin >> wybor;
-
-    return wybor;
-}
-
-char wybierzOpcjeZMenuUzytkownika()
-{
-    char wybor;
-
-    system("cls");
-    cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
-    cout << "---------------------------" << endl;
-    cout << "1. Dodaj adresata" << endl;
-    cout << "2. Wyswietl adresatow" << endl;
-    cout << "---------------------------" << endl;
-    cout << "3. Zmien haslo" << endl;
-    cout << "4. Wyloguj sie" << endl;
-    cout << "---------------------------" << endl;
-    cout << "Twoj wybor: ";
-    cin >> wybor;
-
-    return wybor;
 }
 

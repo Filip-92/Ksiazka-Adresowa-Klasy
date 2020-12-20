@@ -112,16 +112,13 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
         }
         else
         {
-            plikTekstowy <<  liniaZDanymiAdresata << endl;
+            plikTekstowy << endl << liniaZDanymiAdresata;
         }
         idOstatniegoAdresata++;
         plikTekstowy.close();
         return true;
     }
-    else
-    {
         return false;
-    }
 }
 
 vector<Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
@@ -154,6 +151,10 @@ vector<Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(i
     {
         idOstatniegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku);
     }
-
     return adresaci;
+}
+
+int PlikZAdresatami::pobierzIdOstatniegoAdresata()
+{
+    return idOstatniegoAdresata;
 }
