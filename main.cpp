@@ -7,6 +7,8 @@ int main()
 {
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
 
+    //PlikZAdresatami plikZAdresatami("Adresaci.txt");
+
     vector <Adresat> adresaci;
 
     int idZalogowanegoUzytkownika;
@@ -60,9 +62,17 @@ int main()
                     break;
                 case '3':
                     system("cls");
-                    ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
+                    ksiazkaAdresowa.edytujAdresata();
                     break;
                 case '4':
+                    system("cls");
+                    ksiazkaAdresowa.usunAdresata();
+                    break;
+                case '5':
+                    system("cls");
+                    ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
+                    break;
+                case '6':
                     ksiazkaAdresowa.wylogowanieUzytkownika();
                     idZalogowanegoUzytkownika = 0;
                     break;

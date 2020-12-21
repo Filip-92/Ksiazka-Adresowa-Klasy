@@ -32,6 +32,9 @@ public:
 	void dodajAdresata();
 	void wyswietlWszystkichAdresatow();
 	void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+	void wybierzOpcjeZMenuEdycja();
+	void edytujAdresata();
+	void usunAdresata();
 };
 
 #endif

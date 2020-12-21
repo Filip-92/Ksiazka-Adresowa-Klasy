@@ -79,3 +79,18 @@ void AdresatMenadzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
 {
     plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 }
+
+void AdresatMenadzer::wybierzOpcjeZMenuEdycja()
+{
+    plikZAdresatami.wybierzOpcjeZMenuEdycja();
+}
+
+void AdresatMenadzer::usunAdresata()
+{
+    plikZAdresatami.usunAdresata(adresaci);
+}
+
+void AdresatMenadzer::edytujAdresata()
+{
+    plikZAdresatami.edytujAdresata(adresaci);
+}

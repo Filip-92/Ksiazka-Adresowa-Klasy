@@ -37,6 +37,9 @@ public:
 	void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 	char wybierzOpcjeZMenuGlownego();
 	char wybierzOpcjeZMenuUzytkownika();
+	void wybierzOpcjeZMenuEdycja();
+	void edytujAdresata();
+	void usunAdresata();
 };
 
 #endif

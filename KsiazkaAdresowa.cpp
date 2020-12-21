@@ -87,12 +87,29 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika()
     cout << "---------------------------" << endl;
     cout << "1. Dodaj adresata" << endl;
     cout << "2. Wyswietl adresatow" << endl;
+    cout << "3. Edytuj dane adresata" << endl;
+    cout << "4. Usun adresata" << endl;
     cout << "---------------------------" << endl;
-    cout << "3. Zmien haslo" << endl;
-    cout << "4. Wyloguj sie" << endl;
+    cout << "5. Zmien haslo" << endl;
+    cout << "6. Wyloguj sie" << endl;
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
     cin >> wybor;
 
     return wybor;
+}
+
+void KsiazkaAdresowa::wybierzOpcjeZMenuEdycja()
+{
+    adresatMenadzer->wybierzOpcjeZMenuEdycja();
+}
+
+void KsiazkaAdresowa::edytujAdresata()
+{
+    adresatMenadzer->edytujAdresata();
+}
+
+void KsiazkaAdresowa::usunAdresata()
+{
+    adresatMenadzer->usunAdresata();
 }
