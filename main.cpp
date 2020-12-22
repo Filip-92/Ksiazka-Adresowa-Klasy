@@ -9,6 +9,8 @@ int main()
 
     //PlikZAdresatami plikZAdresatami("Adresaci.txt");
 
+    //PlikZUzytkownikami plikZUzytkownikami("Uzytkownicy.txt");
+
     vector <Adresat> adresaci;
 
     int idZalogowanegoUzytkownika;
