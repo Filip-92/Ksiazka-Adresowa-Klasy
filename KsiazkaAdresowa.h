@@ -40,6 +40,8 @@ public:
 	void wybierzOpcjeZMenuEdycja();
 	void edytujAdresata();
 	void usunAdresata();
+    void wyszukajAdresatowPoImieniu ();
+	void wyszukajAdresatowPoNazwisku ();
 };
 
 #endif

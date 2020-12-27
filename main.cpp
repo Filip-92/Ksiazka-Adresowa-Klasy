@@ -7,13 +7,7 @@ int main()
 {
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
 
-    //PlikZAdresatami plikZAdresatami("Adresaci.txt");
-
-    //PlikZUzytkownikami plikZUzytkownikami("Uzytkownicy.txt");
-
     vector <Adresat> adresaci;
-
-    int idZalogowanegoUzytkownika;
 
     char wybor;
 
@@ -32,12 +26,6 @@ int main()
             case '2':
                 system("cls");
                 ksiazkaAdresowa.logowanieUzytkownika();
-                if(ksiazkaAdresowa.czyUzytkownikJestZalogowany() == true)
-                idZalogowanegoUzytkownika++;
-                break;
-             case '3':
-                system("cls");
-                ksiazkaAdresowa.dodajAdresata();
                 break;
             case '9':
                 exit(0);
@@ -64,19 +52,26 @@ int main()
                     break;
                 case '3':
                     system("cls");
-                    ksiazkaAdresowa.edytujAdresata();
+                    ksiazkaAdresowa.wyszukajAdresatowPoImieniu();
                     break;
                 case '4':
                     system("cls");
-                    ksiazkaAdresowa.usunAdresata();
+                    ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
                     break;
                 case '5':
                     system("cls");
-                    ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
+                    ksiazkaAdresowa.edytujAdresata();
                     break;
                 case '6':
+                    system("cls");
+                    ksiazkaAdresowa.usunAdresata();
+                    break;
+                case '7':
+                    system("cls");
+                    ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
+                    break;
+                case '8':
                     ksiazkaAdresowa.wylogowanieUzytkownika();
-                    idZalogowanegoUzytkownika = 0;
                     break;
             default:
                 cout << endl << "Nie ma takiej opcji w menu." << endl << endl;

@@ -157,6 +157,7 @@ int PlikZAdresatami::usunAdresata(vector <Adresat> &adresaci)
     cout << ">>> USUWANIE WYBRANEGO ADRESATA <<<" << endl << endl;
     idUsuwanegoAdresata = podajIdWybranegoAdresata();
 
+    system("cls");
     char znak;
     bool czyIstniejeAdresat = false;
 
@@ -167,6 +168,7 @@ int PlikZAdresatami::usunAdresata(vector <Adresat> &adresaci)
             czyIstniejeAdresat = true;
             cout << endl << "Potwierdz naciskajac klawisz 't': ";
             znak = MetodyPomocnicze::wczytajZnak();
+            system("cls");
             if (znak == 't')
             {
                 usunWybranegoAdresataZPliku(idUsuwanegoAdresata);
@@ -235,6 +237,7 @@ void PlikZAdresatami::zaktualizujDaneWybranegoAdresata(Adresat adresat, int idEd
 {
     int numerLiniiEdytowanegoAdresata = 0;
     string liniaZDanymiAdresata = "";
+    system("cls");
 
     edytujWybranegoAdresataWPliku(adresat);
 

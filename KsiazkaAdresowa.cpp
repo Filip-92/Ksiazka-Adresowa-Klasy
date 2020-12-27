@@ -69,7 +69,6 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuGlownego()
     cout << "---------------------------" << endl;
     cout << "1. Rejestracja" << endl;
     cout << "2. Logowanie" << endl;
-    cout << "3. Dodaj adresata" << endl;
     cout << "9. Koniec programu" << endl;
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
@@ -87,11 +86,13 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika()
     cout << "---------------------------" << endl;
     cout << "1. Dodaj adresata" << endl;
     cout << "2. Wyswietl adresatow" << endl;
-    cout << "3. Edytuj dane adresata" << endl;
-    cout << "4. Usun adresata" << endl;
+    cout << "3. Wyszukaj po imieniu" << endl;
+    cout << "4. Wyszukaj po nazwisku" << endl;
+    cout << "5. Edytuj dane adresata" << endl;
+    cout << "6. Usun adresata" << endl;
     cout << "---------------------------" << endl;
-    cout << "5. Zmien haslo" << endl;
-    cout << "6. Wyloguj sie" << endl;
+    cout << "7. Zmien haslo" << endl;
+    cout << "8. Wyloguj sie" << endl;
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
     cin >> wybor;
@@ -112,4 +113,14 @@ void KsiazkaAdresowa::edytujAdresata()
 void KsiazkaAdresowa::usunAdresata()
 {
     adresatMenadzer->usunAdresata();
+}
+
+void KsiazkaAdresowa::wyszukajAdresatowPoImieniu ()
+{
+    adresatMenadzer->wyszukajAdresatowPoImieniu();
+}
+
+void KsiazkaAdresowa::wyszukajAdresatowPoNazwisku ()
+{
+    adresatMenadzer->wyszukajAdresatowPoNazwisku ();
 }
