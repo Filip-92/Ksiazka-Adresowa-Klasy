@@ -39,6 +39,7 @@ public:
     void edytujWybranegoAdresataWPliku(Adresat adresat);
     char wybierzOpcjeZMenuEdycja();
     void dopisz(string tekst);
+    void wczytajIdOstatniegoAdresata(int Id);
 };
 
 #endif

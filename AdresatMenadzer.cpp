@@ -5,29 +5,24 @@ Adresat AdresatMenadzer::podajDaneNowegoAdresata()
     Adresat adresat;
     string imie, nazwisko, numerTelefonu, email, adres;
 
-    adresat.ustawIdAdresata((plikZAdresatami.pobierzIdOstatniegoAdresata()+1));
+    adresat.ustawIdAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata()+1);
     adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+    plikZAdresatami.wczytajIdOstatniegoAdresata(adresat.pobierzIdAdresata());
 
     cout << "Podaj imie: ";
-    imie = MetodyPomocnicze::wczytajLinie();
+    adresat.ustawImie(MetodyPomocnicze::wczytajLinie());
 
     cout << "Podaj nazwisko: ";
-    nazwisko = MetodyPomocnicze::wczytajLinie();
+    adresat.ustawNazwisko(MetodyPomocnicze::wczytajLinie());
 
     cout << "Podaj numer telefonu: ";
-    numerTelefonu = MetodyPomocnicze::wczytajLinie();
+    adresat.ustawNumerTelefonu(MetodyPomocnicze::wczytajLinie());
 
     cout << "Podaj email: ";
-    email = MetodyPomocnicze::wczytajLinie();
+    adresat.ustawEmail(MetodyPomocnicze::wczytajLinie());
 
     cout << "Podaj adres: ";
-    adres = MetodyPomocnicze::wczytajLinie();
-
-    adresat.ustawImie(imie);
-    adresat.ustawNazwisko(nazwisko);
-    adresat.ustawNumerTelefonu(numerTelefonu);
-    adresat.ustawEmail(email);
-    adresat.ustawAdres(adres);
+    adresat.ustawAdres(MetodyPomocnicze::wczytajLinie());
 
     return adresat;
 }
