@@ -57,7 +57,7 @@ void KsiazkaAdresowa::wypiszWszystkichAdresatow()
 
 void KsiazkaAdresowa::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
 {
-    adresatMenadzer->wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+    adresatMenadzer->wczytajAdresatowZalogowanegoUzytkownikaZPliku(uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika());
 }
 
 char KsiazkaAdresowa::wybierzOpcjeZMenuGlownego()

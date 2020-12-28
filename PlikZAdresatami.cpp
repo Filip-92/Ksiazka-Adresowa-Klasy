@@ -1,5 +1,35 @@
 #include "PlikZAdresatami.h"
 
+PlikZAdresatami::PlikZAdresatami(string NAZWAPLIKUZADRESATAMI):NAZWA_PLIKU_Z_ADRESATAMI(NAZWAPLIKUZADRESATAMI)
+{
+    idOstatniegoAdresata=0;
+}
+
+bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
+{
+    string liniaZDanymiAdresata = "";
+    fstream plikTekstowy;
+    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::out | ios::app);
+
+    if (plikTekstowy.good() == true)
+    {
+        liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonaPionowymiKreskami(adresat);
+
+        if (czyPlikJestPusty() == true)
+        {
+            plikTekstowy << liniaZDanymiAdresata;
+        }
+        else
+        {
+            plikTekstowy << endl << liniaZDanymiAdresata;
+        }
+        idOstatniegoAdresata++;
+        plikTekstowy.close();
+        return true;
+    }
+        return false;
+}
+
 int PlikZAdresatami::pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami)
 {
     int pozycjaRozpoczeciaIdUzytkownika = daneJednegoAdresataOddzielonePionowymiKreskami.find_first_of('|') + 1;
@@ -85,31 +115,6 @@ Adresat PlikZAdresatami::pobierzDaneAdresata(string daneAdresataOddzielonePionow
     return adresat;
 }
 
-bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
-{
-    string liniaZDanymiAdresata = "";
-    fstream plikTekstowy;
-    plikTekstowy.open(NAZWA_PLIKU.c_str(), ios::out | ios::app);
-
-    if (plikTekstowy.good() == true)
-    {
-        liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonaPionowymiKreskami(adresat);
-
-        if (czyPlikJestPusty() == true)
-        {
-            plikTekstowy << liniaZDanymiAdresata;
-        }
-        else
-        {
-            plikTekstowy << endl << liniaZDanymiAdresata;
-        }
-        idOstatniegoAdresata++;
-        plikTekstowy.close();
-        return true;
-    }
-        return false;
-}
-
 vector<Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
 {
     fstream plikTekstowy;
@@ -118,7 +123,7 @@ vector<Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(i
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
 
-    plikTekstowy.open(NAZWA_PLIKU.c_str(), ios::in);
+    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
 
     if (plikTekstowy.good() == true)
     {
@@ -148,50 +153,6 @@ int PlikZAdresatami::pobierzIdOstatniegoAdresata()
     return idOstatniegoAdresata;
 }
 
-int PlikZAdresatami::usunAdresata(vector <Adresat> &adresaci)
-{
-    int idUsuwanegoAdresata = 0;
-
-    system("cls");
-    cout << ">>> USUWANIE WYBRANEGO ADRESATA <<<" << endl << endl;
-    idUsuwanegoAdresata = podajIdWybranegoAdresata();
-
-    system("cls");
-    char znak;
-    bool czyIstniejeAdresat = false;
-
-    for (vector <Adresat>::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
-    {
-        if (itr -> pobierzIdAdresata() == idUsuwanegoAdresata)
-        {
-            czyIstniejeAdresat = true;
-            cout << endl << "Potwierdz naciskajac klawisz 't': ";
-            znak = MetodyPomocnicze::wczytajZnak();
-            system("cls");
-            if (znak == 't')
-            {
-                usunWybranegoAdresataZPliku(idUsuwanegoAdresata);
-                adresaci.erase(itr);
-                cout << endl << "Szukany adresat zostal USUNIETY" << endl << endl;
-                system("pause");
-                return idUsuwanegoAdresata;
-            }
-            else
-            {
-                cout << endl << endl << "Wybrany adresat NIE zostal usuniety" << endl << endl;
-                system("pause");
-                return 0;
-            }
-        }
-    }
-    if (czyIstniejeAdresat == false)
-    {
-        cout << endl << "Nie ma takiego adresata w ksiazce adresowej" << endl << endl;
-        system("pause");
-    }
-    return 0;
-}
-
 void PlikZAdresatami::wczytajIdOstatniegoAdresata(int Id)
 {
     idOstatniegoAdresata=Id;
@@ -204,7 +165,7 @@ void PlikZAdresatami::usunWybranegoAdresataZPliku(int idUsuwanegoAdresata)
     string nazwaTymczasowegoPlikuZAdresatami = "Adresaci_tymczasowy.txt";
     int numerWczytanejLinii = 1;
 
-    odczytywanyPlikTekstowy.open(NAZWA_PLIKU.c_str(), ios::in);
+    odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
     tymczasowyPlikTekstowy.open(nazwaTymczasowegoPlikuZAdresatami.c_str(), ios::out | ios::app);
 
     if (odczytywanyPlikTekstowy.good() == true && idUsuwanegoAdresata != 0)
@@ -224,17 +185,9 @@ void PlikZAdresatami::usunWybranegoAdresataZPliku(int idUsuwanegoAdresata)
         odczytywanyPlikTekstowy.close();
         tymczasowyPlikTekstowy.close();
 
-        MetodyPomocnicze::usunPlik(NAZWA_PLIKU);
-        MetodyPomocnicze::zmienNazwePliku(nazwaTymczasowegoPlikuZAdresatami, NAZWA_PLIKU);
+        MetodyPomocnicze::usunPlik(NAZWA_PLIKU_Z_ADRESATAMI);
+        MetodyPomocnicze::zmienNazwePliku(nazwaTymczasowegoPlikuZAdresatami, NAZWA_PLIKU_Z_ADRESATAMI);
     }
-}
-
-int PlikZAdresatami::podajIdWybranegoAdresata()
-{
-    int idWybranegoAdresata = 0;
-    cout << "Podaj numer ID Adresata: ";
-    idWybranegoAdresata  = MetodyPomocnicze::wczytajLiczbeCalkowita();
-    return idWybranegoAdresata;
 }
 
 int PlikZAdresatami::podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata, int idOstatniegoAdresata)
@@ -251,7 +204,7 @@ int PlikZAdresatami::pobierzZPlikuIdOstatniegoAdresata()
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
-    plikTekstowy.open(NAZWA_PLIKU.c_str(), ios::in);
+    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
 
     if (plikTekstowy.good() == true)
     {
@@ -269,102 +222,6 @@ int PlikZAdresatami::pobierzZPlikuIdOstatniegoAdresata()
     return idOstatniegoAdresata;
 }
 
-void PlikZAdresatami::zaktualizujDaneWybranegoAdresata(Adresat adresat, int idEdytowanegoAdresata)
-{
-    int numerLiniiEdytowanegoAdresata = 0;
-    string liniaZDanymiAdresata = "";
-    system("cls");
-
-    edytujWybranegoAdresataWPliku(adresat);
-
-    cout << endl << "Dane zostaly zaktualizowane." << endl << endl;
-}
-
-char PlikZAdresatami::wybierzOpcjeZMenuEdycja()
-{
-    char wybor;
-
-    cout << endl << "   >>> MENU  EDYCJA <<<" << endl;
-    cout << "---------------------------" << endl;
-    cout << "Ktore dane zaktualizowac: " << endl;
-    cout << "1 - Imie" << endl;
-    cout << "2 - Nazwisko" << endl;
-    cout << "3 - Numer telefonu" << endl;
-    cout << "4 - Email" << endl;
-    cout << "5 - Adres" << endl;
-    cout << "6 - Powrot " << endl;
-    cout << endl << "Twoj wybor: ";
-    wybor = MetodyPomocnicze::wczytajZnak();
-
-    return wybor;
-}
-
-void PlikZAdresatami::edytujAdresata(vector <Adresat> &adresaci)
-{
-    system("cls");
-    Adresat adresat;
-    int idEdytowanegoAdresata = 0;
-    int numerLiniiEdytowanegoAdresata = 0;
-    string liniaZDanymiAdresata = "";
-
-    cout << ">>> EDYCJA WYBRANEGO ADRESATA <<<" << endl << endl;
-    idEdytowanegoAdresata = podajIdWybranegoAdresata();
-
-    char wybor;
-    bool czyIstniejeAdresat = false;
-
-    for (int i = 0; i < adresaci.size(); i++)
-    {
-        if (adresaci[i].pobierzIdAdresata() == idEdytowanegoAdresata)
-        {
-            czyIstniejeAdresat = true;
-            wybor = wybierzOpcjeZMenuEdycja();
-
-            switch (wybor)
-            {
-            case '1':
-                cout << "Podaj nowe imie: ";
-                adresaci[i].ustawImie(MetodyPomocnicze::wczytajLinie());
-                adresaci[i].ustawImie(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresaci[i].pobierzImie()));
-                zaktualizujDaneWybranegoAdresata(adresaci[i], idEdytowanegoAdresata);
-                break;
-            case '2':
-                cout << "Podaj nowe nazwisko: ";
-                adresaci[i].ustawNazwisko(MetodyPomocnicze::wczytajLinie());
-                adresaci[i].ustawNazwisko(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresaci[i].pobierzNazwisko()));
-                zaktualizujDaneWybranegoAdresata(adresaci[i], idEdytowanegoAdresata);
-                break;
-            case '3':
-                cout << "Podaj nowy numer telefonu: ";
-                adresaci[i].ustawNumerTelefonu(MetodyPomocnicze::wczytajLinie());
-                zaktualizujDaneWybranegoAdresata(adresaci[i], idEdytowanegoAdresata);
-                break;
-            case '4':
-                cout << "Podaj nowy email: ";
-                adresaci[i].ustawEmail(MetodyPomocnicze::wczytajLinie());
-                zaktualizujDaneWybranegoAdresata(adresaci[i], idEdytowanegoAdresata);
-                break;
-            case '5':
-                cout << "Podaj nowy adres zamieszkania: ";
-                adresaci[i].ustawAdres(MetodyPomocnicze::wczytajLinie());
-                zaktualizujDaneWybranegoAdresata(adresaci[i], idEdytowanegoAdresata);
-                break;
-            case '6':
-                cout << endl << "Powrot do menu uzytkownika" << endl << endl;
-                break;
-            default:
-                cout << endl << "Nie ma takiej opcji w menu! Powrot do menu uzytkownika." << endl << endl;
-                break;
-            }
-        }
-    }
-    if (czyIstniejeAdresat == false)
-    {
-        cout << endl << "Nie ma takiego adresata." << endl << endl;
-    }
-    system("pause");
-}
-
 void PlikZAdresatami::edytujWybranegoAdresataWPliku(Adresat adresat)
 {
     fstream odczytywanyPlikTekstowy, tymczasowyPlikTekstowy;
@@ -373,7 +230,7 @@ void PlikZAdresatami::edytujWybranegoAdresataWPliku(Adresat adresat)
     string liniaZDanymiAdresata = "";
     int numerWczytanejLinii = 1;
 
-    odczytywanyPlikTekstowy.open(NAZWA_PLIKU.c_str(), ios::in);
+    odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
     tymczasowyPlikTekstowy.open(nazwaTymczasowegoPlikuZAdresatami.c_str(), ios::out | ios::app);
 
     if (odczytywanyPlikTekstowy.good() == true && adresat.pobierzIdAdresata() != 0)
@@ -400,8 +257,8 @@ void PlikZAdresatami::edytujWybranegoAdresataWPliku(Adresat adresat)
         odczytywanyPlikTekstowy.close();
         tymczasowyPlikTekstowy.close();
 
-        MetodyPomocnicze::usunPlik(NAZWA_PLIKU);
-        MetodyPomocnicze::zmienNazwePliku(nazwaTymczasowegoPlikuZAdresatami, NAZWA_PLIKU);
+        MetodyPomocnicze::usunPlik(NAZWA_PLIKU_Z_ADRESATAMI);
+        MetodyPomocnicze::zmienNazwePliku(nazwaTymczasowegoPlikuZAdresatami, NAZWA_PLIKU_Z_ADRESATAMI);
     }
 }
 
