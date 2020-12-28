@@ -9,8 +9,6 @@ int main()
 
     vector <Adresat> adresaci;
 
-    int idZalogowanegoUzytkownika;
-
     char wybor;
 
     while (true)
@@ -28,12 +26,6 @@ int main()
             case '2':
                 system("cls");
                 ksiazkaAdresowa.logowanieUzytkownika();
-                if(ksiazkaAdresowa.czyUzytkownikJestZalogowany() == true)
-                idZalogowanegoUzytkownika++;
-                break;
-             case '3':
-                system("cls");
-                ksiazkaAdresowa.dodajAdresata();
                 break;
             case '9':
                 exit(0);
@@ -60,11 +52,26 @@ int main()
                     break;
                 case '3':
                     system("cls");
-                    ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
+                    ksiazkaAdresowa.wyszukajAdresatowPoImieniu();
                     break;
                 case '4':
+                    system("cls");
+                    ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
+                    break;
+                case '5':
+                    system("cls");
+                    ksiazkaAdresowa.edytujAdresata();
+                    break;
+                case '6':
+                    system("cls");
+                    ksiazkaAdresowa.usunAdresata();
+                    break;
+                case '7':
+                    system("cls");
+                    ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
+                    break;
+                case '8':
                     ksiazkaAdresowa.wylogowanieUzytkownika();
-                    idZalogowanegoUzytkownika = 0;
                     break;
             default:
                 cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
