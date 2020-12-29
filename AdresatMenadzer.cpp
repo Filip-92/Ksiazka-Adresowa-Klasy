@@ -7,7 +7,6 @@ Adresat AdresatMenadzer::podajDaneNowegoAdresata()
 
     adresat.ustawIdAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata()+1);
     adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
-    plikZAdresatami.wczytajIdOstatniegoAdresata(adresat.pobierzIdAdresata());
 
     cout << "Podaj imie: ";
     adresat.ustawImie(MetodyPomocnicze::wczytajLinie());

@@ -25,11 +25,14 @@ class AdresatMenadzer
 	PlikZAdresatami plikZAdresatami;
 
 public:
-	AdresatMenadzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika) :
-		plikZAdresatami(nazwaPlikuZAdresatami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
-	{
-		adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
-	}
+	AdresatMenadzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
+	: plikZAdresatami(nazwaPlikuZAdresatami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
+    {
+        adresaci=plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+        fstream plikTekstowy;
+        plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::out|ios::app);
+        plikTekstowy.close();
+    };
 	void dodajAdresata();
 	void wyswietlWszystkichAdresatow();
 	void wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
